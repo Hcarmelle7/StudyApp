@@ -1,6 +1,6 @@
 import 'package:mystudy/quiz/answers/data/models/answer_model.dart';
 import 'package:mystudy/quiz/questions/data/models/question_model.dart';
-import 'package:mystudy/quiz/answers/data/services/Answer_service.dart';
+import 'package:mystudy/quiz/answers/data/services/answer_service.dart';
 import 'package:mystudy/quiz/questions/data/services/question_service.dart';
 
 class QuestionRepository {

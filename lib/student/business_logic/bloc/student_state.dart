@@ -26,6 +26,8 @@ final class FetchStudentsFailure extends StudentState {
 final class FetchStudentLoading extends StudentState {}
 
 final class FetchStudentSuccess extends StudentState {
+  @override
+  // ignore: overridden_fields
   final StudentModel student;
   const FetchStudentSuccess(this.student);
 } 

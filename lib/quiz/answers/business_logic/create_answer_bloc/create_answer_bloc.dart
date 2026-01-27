@@ -19,9 +19,9 @@ class CreateAnswerBloc extends Bloc<CreateAnswersEvent, CreateAnswerState> {
 
     on<UpdateAnswerEvent>((event, emit) async {
       emit(UpdateAnswerLoading());
-      final Answer =
-          await repository.updateAnswer(event.id, event.Answer);
-      emit(UpdateAnswerSuccess(Answer));
+      final answer =
+          await repository.updateAnswer(event.id, event.answer);
+      emit(UpdateAnswerSuccess(answer));
     });
 
     on<DeleteAnswerEvent>((event, emit) async {

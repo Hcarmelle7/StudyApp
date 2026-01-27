@@ -2,20 +2,20 @@ class ClasseModel {
   final int? id;
   final String title;
   final int levelId;
-  final int Nstudents;
+  final int nStudents;
 
   ClasseModel(
       {this.id,
       required this.title,
       required this.levelId,
-      required this.Nstudents});
+      required this.nStudents});
 
   factory ClasseModel.fromJson(Map<String, dynamic> json) {
     return ClasseModel(
         id: json['id'],
         title: json['title'],
         levelId: json['levelId'],
-        Nstudents: json['Nstudents']);
+        nStudents: json['Nstudents']);
   }
 
   Map<String, dynamic> toJson() {
@@ -23,7 +23,7 @@ class ClasseModel {
       'id': id,
       'title': title,
       'levelId': levelId,
-      'Nstudents': Nstudents,
+      'Nstudents': nStudents,
     };
   }
 }

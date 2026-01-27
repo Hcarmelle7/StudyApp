@@ -19,6 +19,6 @@ final class GetAllSubjectsLoading extends SubjectState {}
 
 final class CreateSubjectLoading extends SubjectState {}
 final class CreateSubjectSuccess extends SubjectState {
-  final SubjectModel Subject;
-  CreateSubjectSuccess(this.Subject);
+  final SubjectModel subject;
+  CreateSubjectSuccess(this.subject);
 }

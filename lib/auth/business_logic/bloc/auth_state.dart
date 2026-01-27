@@ -28,7 +28,7 @@ class RegisterFailure extends AuthState {
 final class LoginLoading extends AuthState {}
 
 final class LoginSuccess extends AuthState {
-  const LoginSuccess({required user});
+  const LoginSuccess({required super.user});
 }
 
 final class LoginFailure extends AuthState {

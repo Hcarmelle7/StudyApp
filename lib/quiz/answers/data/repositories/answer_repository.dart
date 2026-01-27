@@ -1,5 +1,5 @@
 import 'package:mystudy/quiz/answers/data/models/answer_model.dart';
-import 'package:mystudy/quiz/answers/data/services/Answer_service.dart';
+import 'package:mystudy/quiz/answers/data/services/answer_service.dart';
 
 class AnswerRepository {
   final AnswerService service;
@@ -22,8 +22,8 @@ class AnswerRepository {
     return await service.createAnswer(answer);
   }
 
-  Future<AnswerModel> updateAnswer(int id, AnswerModel Answer) async {
-    return await service.updateAnswer(id, Answer);
+  Future<AnswerModel> updateAnswer(int id, AnswerModel answer) async {
+    return await service.updateAnswer(id, answer);
   }
 
   Future<void> deleteAnswer(int id) async {

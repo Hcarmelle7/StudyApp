@@ -12,8 +12,8 @@ class ScoreBloc extends Bloc<ScoreEvent, ScoreState> {
     on<GetAllScoresEvent>((event, emit) async {
       emit(GetAllScoresLoading());
       try {
-        final Score = await repository.getAllScores();
-        emit(GetAllScoresSuccess(Score));
+        final score = await repository.getAllScores();
+        emit(GetAllScoresSuccess(score));
       } catch (e) {
         emit(GetAllScoresFailure(message: e.toString()));
       }

@@ -41,23 +41,26 @@ class LoginScreen extends StatelessWidget {
       body: BlocListener<AuthBloc, AuthState>(
         listener: (context, state) async {
           SharedPreferences prefs = await SharedPreferences.getInstance();
-          List<String> user_role =
+          List<String> userRole =
               prefs.getStringList('role') ?? ['ROLE_STUDENT'];
           if (state is LoginSuccess) {
             // getIt.get<StudentBloc>().add(GetAllStudentsEvent());
             // Navigator.of(context).pushReplacement(
             //     MaterialPageRoute(builder: (context) => RegisterScreen()));
             // context.router.push(HomeRoute());
-            if (user_role.first == 'ROLE_STUDENT') {
+            if (userRole.first == 'ROLE_STUDENT') {
               getIt.get<ProfileBloc>().add(GetCurrentUserEvent());
               getIt.get<SubjectBloc>().add(GetAllSubjectEvent());
               getIt.get<ScoreBloc>().add(GetAllScoresEvent());
+              if (!context.mounted) return;
               context.router.pushAndPopUntil(const StudentBoardRoute(),
                   predicate: (router) => false);
-            } else if (user_role.first == 'ROLE_TEACHER') {
+            } else if (userRole.first == 'ROLE_TEACHER') {
+              if (!context.mounted) return;
               context.router.pushAndPopUntil(const TeacherBoardRoute(),
                   predicate: (router) => false);
             } else {
+              if (!context.mounted) return;
               context.router.pushAndPopUntil(const HomeRoute(),
                   predicate: (router) => false);
             }
@@ -66,6 +69,7 @@ class LoginScreen extends StatelessWidget {
             //   predicate: (router) => false,
             // );
           } else if (state is LoginFailure) {
+            if (!context.mounted) return;
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(content: Text('Erreur : ${state.message}')),
             );
@@ -191,6 +195,7 @@ class LoginScreen extends StatelessWidget {
                           onPressed: () {
                             context.router.push(const LegisterRoute());
                           },
+                          color: AppColors.darkColorScheme.primary,
                           child: const Padding(
                             padding: EdgeInsets.symmetric(vertical: 12),
                             child: Text(
@@ -198,7 +203,6 @@ class LoginScreen extends StatelessWidget {
                               style: TextStyle(color: AppColors.white),
                             ),
                           ),
-                          color: AppColors.darkColorScheme.primary,
                         ),
                       ),
                     ],

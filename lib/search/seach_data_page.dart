@@ -19,7 +19,7 @@ class SeachDataPage extends StatefulWidget {
 
 class _SeachDataPageState extends State<SeachDataPage> {
     TextEditingController controller = TextEditingController();
-    List<SubjectModel> _subject = [];
+    //final List<SubjectModel> _subject = [];
     int selectedLevel = 0;
 
 
@@ -102,11 +102,13 @@ class _SeachDataPageState extends State<SeachDataPage> {
                                       itemBuilder: (context, index) {
                                           SubjectModel subject = state.subject[index];
 
-                                          if(controller.text.trim().isEmpty)
-                                              return Container();
-
-                                          if(!subject.title.toLowerCase().contains(controller.text.toLowerCase()))
+                                          if(controller.text.trim().isEmpty) {
                                             return Container();
+                                          }
+
+                                          if(!subject.title.toLowerCase().contains(controller.text.toLowerCase())) {
+                                            return Container();
+                                          }
           
                                           // Define background color and icon for each subject
                                           Color backgroundColor = AppColors.primary;

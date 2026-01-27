@@ -17,7 +17,7 @@ import '../../../../subject/business_logic/subject_bloc/subject_bloc.dart';
 @RoutePage()
 // ignore: must_be_immutable
 class CreateQuestionPage extends StatefulWidget {
-  CreateQuestionPage({super.key});
+  const CreateQuestionPage({super.key});
 
   @override
   State<CreateQuestionPage> createState() => _CreateQuestionPageState();
@@ -68,7 +68,7 @@ class _CreateQuestionPageState extends State<CreateQuestionPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white,
-      appBar: AppBar(title: Center(child: const Text('Create Questions'))),
+      appBar: AppBar(title: const Center(child: Text('Create Questions'))),
       body: BlocListener<CreateQuestionBloc, CreateQuestionState>(
         listener: (context, state) {
           if (state is CreateQuestionSuccess) {
@@ -208,16 +208,16 @@ class _CreateQuestionPageState extends State<CreateQuestionPage> {
       bottomNavigationBar: BottomNavigationBar(items:  [
         BottomNavigationBarItem(icon: InkWell(onTap: () {
           getIt.get<ProfileBloc>().add(GetCurrentUserEvent());
-          context.router.pushAndPopUntil(TeacherBoardRoute(), predicate: (router) => false);
-        },child: Icon(Icons.home)), label: 'home'),
+          context.router.pushAndPopUntil(const TeacherBoardRoute(), predicate: (router) => false);
+        },child: const Icon(Icons.home)), label: 'home'),
         BottomNavigationBarItem(icon: InkWell(onTap: (){
           getIt.get<SubjectBloc>().add(GetAllSubjectEvent());
           context.router.push(CreateQuestionRoute());
-        } ,child: Icon(Icons.question_answer)), label: 'Questions'),
+        } ,child: const Icon(Icons.question_answer)), label: 'Questions'),
         BottomNavigationBarItem(icon: InkWell(onTap: () {
           getIt.get<SubjectBloc>().add(GetAllSubjectEvent());
-          context.router.pushAndPopUntil(QuestionListRoute(), predicate: (router) => false);
-        },child: Icon(Icons.folder_open)), label: 'Library'),
+          context.router.pushAndPopUntil(const QuestionListRoute(), predicate: (router) => false);
+        },child: const Icon(Icons.folder_open)), label: 'Library'),
       ]),
     );
   }

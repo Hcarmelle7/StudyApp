@@ -4,14 +4,14 @@ part of 'create_classes_bloc.dart';
 sealed class CreateClassesEvent {}
 
 class CreateClasseEvent extends CreateClassesEvent {
-  final ClasseModel Classe;
-  CreateClasseEvent( this.Classe);
+  final ClasseModel classe;
+  CreateClasseEvent( this.classe);
 }
 
 class UpdateClasseEvent extends CreateClassesEvent {
   final int id;
-  final ClasseModel Classe;
-  UpdateClasseEvent({required this.id, required this.Classe});
+  final ClasseModel classe;
+  UpdateClasseEvent({required this.id, required this.classe});
 }
 
 class DeleteClasseEvent extends CreateClassesEvent {

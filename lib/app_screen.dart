@@ -61,7 +61,7 @@ class AppScreen extends StatelessWidget {
         const SubjectListRoute(),
         const CreateQuizRoute(),
         QuizRoute(),
-        GameRoute()  // N'oubliez pas d'ajouter les routes pour chaque onglet
+        const GameRoute()  // N'oubliez pas d'ajouter les routes pour chaque onglet
       ],
     );
   }

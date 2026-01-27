@@ -68,7 +68,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               await SharedPreferences.getInstance();
 
                           prefs.setBool('is_first_time_launch', true);
-
+                          if (!context.mounted) return;
                           context.router.pushAndPopUntil(
                             LoginRoute(),
                             predicate: (router) => false,

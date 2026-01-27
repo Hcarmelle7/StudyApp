@@ -16,7 +16,7 @@ class QuestionListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Question List')),
-      body: SingleChildScrollView(child: SubjectWidget(image: AssetImage('assets/images/book.png'))),
+      body: const SingleChildScrollView(child: SubjectWidget(image: AssetImage('assets/images/book.png'))),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           // Navigator.of(context).push(
@@ -29,15 +29,15 @@ class QuestionListPage extends StatelessWidget {
         BottomNavigationBarItem(icon: InkWell(onTap: () {
           getIt.get<ProfileBloc>().add(GetCurrentUserEvent());
 
-          context.router.pushAndPopUntil(TeacherBoardRoute(), predicate: (router) => false);
-        },child: Icon(Icons.home)), label: 'home'),
+          context.router.pushAndPopUntil(const TeacherBoardRoute(), predicate: (router) => false);
+        },child: const Icon(Icons.home)), label: 'home'),
         BottomNavigationBarItem(icon: InkWell(onTap: (){
           context.router.push(CreateQuestionRoute());
-        } ,child: Icon(Icons.question_answer)), label: 'Questions'),
+        } ,child: const Icon(Icons.question_answer)), label: 'Questions'),
         BottomNavigationBarItem(icon: InkWell(onTap: () {
           getIt.get<SubjectBloc>().add(GetAllSubjectEvent());
-          context.router.pushAndPopUntil(QuestionListRoute(), predicate: (router) => false);
-        },child: Icon(Icons.folder_open)), label: 'Library'),
+          context.router.pushAndPopUntil(const QuestionListRoute(), predicate: (router) => false);
+        },child: const Icon(Icons.folder_open)), label: 'Library'),
       ]),
     );
   }

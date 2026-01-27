@@ -97,7 +97,7 @@ class StudentBoardScreen extends StatelessWidget {
                           decoration: BoxDecoration(
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.black.withOpacity(0.1),
+                                color: Colors.black.withValues(alpha: 0.1),
                                 blurRadius: 8,
                                 offset: const Offset(0, 12),
                               ),
@@ -105,14 +105,14 @@ class StudentBoardScreen extends StatelessWidget {
                           ),
                           child: InkWell(
                               onTap: () {
-                                context.router.push(SeachDataRoute());
+                                context.router.push(const SeachDataRoute());
                               },
                               child: Container(
                                 decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(25)),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
+                                child: const Padding(
+                                  padding: EdgeInsets.all(8.0),
                                   child: Row(
                                     children: [
                                       Icon(Icons.search),

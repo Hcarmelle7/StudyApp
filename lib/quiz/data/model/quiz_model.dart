@@ -4,14 +4,14 @@ class QuizModel {
   final int id;
   final String title;
   final String description;
-  final int? Nquestions;
+  final int? nQuestions;
   List<QuestionModel> questions;
 
   QuizModel(
       {required this.id,
       required this.title,
       required this.description,
-      this.Nquestions,
+      this.nQuestions,
       required this.questions});
 
   factory QuizModel.fromJson(Map<String, dynamic> json) {
@@ -19,7 +19,7 @@ class QuizModel {
       id: json['id'],
       title: json['title'],
       description: json['description'],
-      Nquestions: json['Nquestions'],
+      nQuestions: json['Nquestions'],
       questions: json['questions'] != null
           ? (json['questions'])
               .map((question) => QuestionModel.fromJson(question))
@@ -33,7 +33,7 @@ class QuizModel {
       'id': id,
       'description': description,
       'title': title,
-      'n_question': Nquestions,
+      'n_question': nQuestions,
       'questions': questions.map((question) => question.toJson()).toList()
     };
   }

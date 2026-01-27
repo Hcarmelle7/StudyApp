@@ -37,7 +37,7 @@ class _LegisterState extends State<LegisterPage> {
         color: const Color.fromARGB(255, 255, 255, 255),
         child: Column(
           children: [
-            Container(
+            SizedBox(
               height: 195,
               child: CupertinoDatePicker(
                 initialDateTime: DateTime.now(),

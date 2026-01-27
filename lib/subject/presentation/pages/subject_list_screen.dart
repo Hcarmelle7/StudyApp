@@ -11,10 +11,10 @@ class SubjectListScreen extends StatelessWidget {
     return Scaffold(
         backgroundColor: const Color.fromARGB(255, 236, 231, 231),
 
-      appBar: AppBar(title: Center(child: const Text('Library'))),
-      body: SingleChildScrollView(
+      appBar: AppBar(title: const Center(child: Text('Library'))),
+      body: const SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(8.0),
             child: SubjectWidget(image: AssetImage('assets/images/book.png')),
           ))
       

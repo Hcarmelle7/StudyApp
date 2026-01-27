@@ -51,7 +51,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                         Text(
                           '${state.user.firstname} ${state.user.lastname}',
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 20, fontWeight: FontWeight.bold),
                         ),
                         // Text('+237 ${state.user.phone} '),
@@ -179,7 +179,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             height: 15,
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 15),
+            padding: const EdgeInsets.symmetric(horizontal: 15),
             child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.black,
@@ -190,6 +190,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       await SharedPreferences.getInstance();
                   prefs.remove('token');
                   prefs.remove('role');
+                  if (!context.mounted) return;
                   context.router.pushAndPopUntil(LoginRoute(),
                       predicate: (router) => false);
                 },
@@ -204,7 +205,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             height: 8,
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 15),
+            padding: const EdgeInsets.symmetric(horizontal: 15),
             child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.black,

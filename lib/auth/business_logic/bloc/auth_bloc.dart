@@ -32,7 +32,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         );
 
         if (user) {
-          emit(LoginSuccess(user: user));
+          emit(LoginSuccess(user: user as UserModel));
         } else {
           emit(const LoginFailure(
             message: 'Email ou mot de passe incorrect',
@@ -61,12 +61,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         final SharedPreferences prefs = await SharedPreferences.getInstance();
 
         bool? isFirsTime = prefs.getBool('is_first_time_launch');
-        if (isFirsTime == null) isFirsTime = false;
+        isFirsTime ??= false;
         print(isFirsTime);
         if (isFirsTime) {
           // var user = await repository.getCurrentUser();
           String? token = prefs.getString('token');
-          if (token == null) token = '';
+          token ??= '';
 
           if (token.isNotEmpty) {
             var user = await repository.getCurrentUser();

@@ -1,0 +1,64 @@
+# -----------------------
+# Fichiers Systèmes & IDE
+# -----------------------
+.DS_Store
+.history
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.iml
+
+# -----------------------
+# Flutter & Dart (Le plus important)
+# -----------------------
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+build/
+app.*.symbols
+
+# -----------------------
+# Android
+# -----------------------
+android/app/libs/
+android/app/src/main/assets/
+android/captures/
+android/gradlew
+android/gradlew.bat
+android/local.properties
+android/.gradle
+android/**/gradle-wrapper.jar
+android/**/*.keystore
+
+# -----------------------
+# iOS
+# -----------------------
+ios/Flutter/App.framework
+ios/Flutter/Flutter.framework
+ios/Flutter/Generated.xcconfig
+ios/Flutter/app.flx
+ios/Flutter/app.zip
+ios/Flutter/flutter_assets/
+ios/ServiceDefinitions.json
+ios/Runner/GeneratedPluginRegistrant.*
+
+# -----------------------
+# Web, Linux, Windows, Mac
+# -----------------------
+lib/generated_plugin_registrant.dart
+linux/flutter/ephemeral/
+windows/flutter/ephemeral/
+macos/Flutter/ephemeral/
+
+# -----------------------
+# 🔒 SÉCURITÉ (TRÈS IMPORTANT)
+# -----------------------
+.env
+env/
+*.pem

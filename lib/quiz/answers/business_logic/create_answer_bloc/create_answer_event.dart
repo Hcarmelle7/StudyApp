@@ -12,8 +12,8 @@ class CreateAnswerEvent extends CreateAnswersEvent {
 
 class UpdateAnswerEvent extends CreateAnswersEvent {
   final int id;
-  final AnswerModel Answer;
-  UpdateAnswerEvent(this.id, this.Answer);
+  final AnswerModel answer;
+  UpdateAnswerEvent(this.id, this.answer);
 }
 
 class DeleteAnswerEvent extends CreateAnswersEvent {

@@ -27,10 +27,10 @@ class _QuizGameScreenState extends State<QuizGameScreen>
   int? _selectedAnswerIndex;
   double progress = 1.0;
   int timeRemaining = 5;
-  Duration duration = new Duration();
+  Duration duration = const Duration();
   int totalSeconds = 0;
   int _score = 0;
-  late int? _NQuestions;
+  late int? _nQuestions;
   late ConfettiController _confettiController;
   late final AnimationController _controller;
 
@@ -66,7 +66,7 @@ class _QuizGameScreenState extends State<QuizGameScreen>
 
   void addScore(BuildContext context) {
     final score =
-        ScoreModel(id: Random().nextInt(100), score: (_score / _NQuestions!));
+        ScoreModel(id: Random().nextInt(100), score: (_score / _nQuestions!));
     BlocProvider.of<CreateQuizBloc>(context).add(CreateScoreEvent(score));
   }
 
@@ -122,7 +122,7 @@ class _QuizGameScreenState extends State<QuizGameScreen>
                     const SizedBox(height: 10),
                     // Affichage du score
                     Text(
-                      '${((_score * 100) / _NQuestions!).toStringAsFixed(1)}% Score',
+                      '${((_score * 100) / _nQuestions!).toStringAsFixed(1)}% Score',
                       style: TextStyle(
                         fontSize: 28,
                         fontWeight: FontWeight.bold,
@@ -139,7 +139,7 @@ class _QuizGameScreenState extends State<QuizGameScreen>
                     ),
                     const SizedBox(height: 10),
                     Text(
-                      'You attempted $_NQuestions questions, and from that $_score is correct! ',
+                      'You attempted $_nQuestions questions, and from that $_score is correct! ',
                       style: const TextStyle(
                         // fontSize: 40,
                         fontWeight: FontWeight.bold,
@@ -203,7 +203,7 @@ class _QuizGameScreenState extends State<QuizGameScreen>
 
   int _currentPage = 0;
   void _nextPage() {
-    if (_currentPage < _NQuestions!) {
+    if (_currentPage < _nQuestions!) {
       setState(() {
         _currentPage++;
       });
@@ -241,7 +241,7 @@ class _QuizGameScreenState extends State<QuizGameScreen>
           } else if (state is GetQuizFailure) {
             return Center(child: Text('Error: ${state.message}'));
           } else if (state is GetQuizSuccess) {
-            _NQuestions = state.quiz.quiz.Nquestions;
+            _nQuestions = state.quiz.quiz.nQuestions;
             return Scaffold(
               backgroundColor: Colors.deepPurple,
               // appBar: AppBar(
@@ -258,8 +258,7 @@ class _QuizGameScreenState extends State<QuizGameScreen>
                       shouldLoop: false,
                     ),
                     Container(
-                      color: Colors.black.withOpacity(
-                          0.4), // Fond semi-transparent pendant l'animation des confettis
+                      color: Colors.black.withValues(alpha: 0.4), // Fond semi-transparent pendant l'animation des confettis
                     ),
                     const PlasmaBackground(),
                     PageView.builder(
@@ -300,7 +299,7 @@ class _QuizGameScreenState extends State<QuizGameScreen>
                                 ),
                               ),
                               Text(
-                                'Question ${index + 1}/${state.quiz.quiz.Nquestions}',
+                                'Question ${index + 1}/${state.quiz.quiz.nQuestions}',
                                 style: const TextStyle(color: Colors.white),
                               ),
                               Center(

@@ -18,8 +18,8 @@ class GetAnswerBloc extends Bloc<GetAnswersEvent, GetAnswerState> {
 
     on<GetAnswerEvent>((event, emit) async {
       emit(GetAnswerLoading());
-      final Answer = await repository.getAnswer(event.id);
-      emit(GetAnswerSuccess(Answer));
+      final answer = await repository.getAnswer(event.id);
+      emit(GetAnswerSuccess(answer));
     });
 
     on<GetAnswerByQuestionEvent>((event, emit) async {

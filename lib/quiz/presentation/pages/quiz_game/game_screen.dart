@@ -25,12 +25,12 @@ class GameScreen extends StatefulWidget {
 
 class _GameScreenState extends State<GameScreen>
     with SingleTickerProviderStateMixin {
-  PageController _pageController = new PageController();
-  ConfettiController _confettiController = new ConfettiController();
+  final PageController _pageController = PageController();
+  final ConfettiController _confettiController = ConfettiController();
   late AnimationController _controller;
 
   double progress = 1.0;
-  int _NQuestions = 2;
+  int _nQuestions = 2;
   bool isStartime = false;
 
   int totalSeconds = 10;
@@ -60,7 +60,7 @@ class _GameScreenState extends State<GameScreen>
     indexSelect = null;
 
     while (timeRemaining > 0) {
-      await Future.delayed(Duration(seconds: 1));
+      await Future.delayed(const Duration(seconds: 1));
       timeRemaining--;
       progress = timeRemaining / totalSeconds;
 
@@ -71,7 +71,7 @@ class _GameScreenState extends State<GameScreen>
 
   void addScore(BuildContext context) {
     final score =
-        ScoreModel(id: Random().nextInt(100), score: (_score / _NQuestions));
+        ScoreModel(id: Random().nextInt(100), score: (_score / _nQuestions));
     BlocProvider.of<CreateQuizBloc>(context).add(CreateScoreEvent(score));
   }
 
@@ -99,8 +99,9 @@ class _GameScreenState extends State<GameScreen>
 
   //body
   Widget _bodyGame() {
-    for (var value in data)
-      print(value.content + " VS: ${value.answers.length}");
+    for (var value in data) {
+      print("${value.content} VS: ${value.answers.length}");
+    }
 
     print("mes data : $data");
     return Padding(
@@ -113,7 +114,7 @@ class _GameScreenState extends State<GameScreen>
               children: data.isNotEmpty
                   ? [
                       _questionDuration(),
-                      SizedBox(height: 35,),
+                      const SizedBox(height: 35,),
                       _quizContent(data[index]),
                       getCustomButton()
                     ]
@@ -129,7 +130,7 @@ class _GameScreenState extends State<GameScreen>
       onPressed: () {
         startTimer();
       },
-      child: Icon(
+      child: const Icon(
         Icons.build,
         color: Colors.white,
       ),
@@ -186,7 +187,7 @@ class _GameScreenState extends State<GameScreen>
       } else if (state is GetQuizFailure) {
         return Center(child: Text('Error: ${state.message}'));
       } else if (state is GetQuizSuccess) {
-        _NQuestions = state.quiz.quiz.Nquestions!;
+        _nQuestions = state.quiz.quiz.nQuestions!;
         data = state.quiz.questions;
 
         if (!isStart) {
@@ -214,7 +215,7 @@ class _GameScreenState extends State<GameScreen>
       child: Column(
         children: [
           questionContainer(question),
-          SizedBox(
+          const SizedBox(
             height: 12,
           ),
           ...List<Widget>.generate(
@@ -241,7 +242,7 @@ class _GameScreenState extends State<GameScreen>
           child: Text(
         question.content,
         textAlign: TextAlign.center,
-        style: TextStyle(
+        style: const TextStyle(
             color: Colors.white, fontWeight: FontWeight.w900, fontSize: 20),
       )),
     );
@@ -251,14 +252,25 @@ class _GameScreenState extends State<GameScreen>
     List<String> tab = ['A', 'B', 'C', 'D', 'E', 'F'];
 
     return Container(
-      padding: EdgeInsets.all(5.0),
-      margin: EdgeInsets.all(5.0),
+      padding: const EdgeInsets.all(5.0),
+      margin: const EdgeInsets.all(5.0),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(25.0),
+          border: Border.all(
+              color: indexSelect == null
+                  ? Colors.white
+                  : indexSelect != index
+                      ? Colors.white
+                      : answer.isTrue
+                          ? Colors.green
+                          : Colors.red,
+              width: 3.0)),
       child: ListTile(
         leading: CircleAvatar(
           backgroundColor: Colors.black,
           child: Text(tab[index],
               style:
-                  TextStyle(color: Colors.white, fontWeight: FontWeight.w900)),
+                  const TextStyle(color: Colors.white, fontWeight: FontWeight.w900)),
         ),
         title: Text(
           answer.content,
@@ -280,17 +292,6 @@ class _GameScreenState extends State<GameScreen>
           });
         },
       ),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(25.0),
-          border: Border.all(
-              color: indexSelect == null
-                  ? Colors.white
-                  : indexSelect != index
-                      ? Colors.white
-                      : answer.isTrue
-                          ? Colors.green
-                          : Colors.red,
-              width: 3.0)),
     );
   }
 
@@ -346,7 +347,7 @@ class _GameScreenState extends State<GameScreen>
                     const SizedBox(height: 10),
                     // Affichage du score
                     Text(
-                      '${((_score * 100) / _NQuestions).toStringAsFixed(1)}% Score',
+                      '${((_score * 100) / _nQuestions).toStringAsFixed(1)}% Score',
                       style: TextStyle(
                         fontSize: 28,
                         fontWeight: FontWeight.bold,
@@ -363,7 +364,7 @@ class _GameScreenState extends State<GameScreen>
                     ),
                     const SizedBox(height: 10),
                     Text(
-                      'You attempted $_NQuestions questions, and from that $_score is correct! ',
+                      'You attempted $_nQuestions questions, and from that $_score is correct! ',
                       style: const TextStyle(
                         // fontSize: 40,
                         fontWeight: FontWeight.bold,

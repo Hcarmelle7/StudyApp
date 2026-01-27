@@ -46,10 +46,10 @@ class _AppInitScreenState extends State<AppInitScreen>
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) async {
         SharedPreferences prefs = await SharedPreferences.getInstance();
-        List<String> user_role =
+        List<String> userRole =
             prefs.getStringList('role') ?? ['ROLE_STUDENT'];
 
-        print(user_role.first);
+        print(userRole.first);
 
         _controller.addStatusListener((status) {
           if (state is FirstTimeLaunch && status == AnimationStatus.completed) {
@@ -57,14 +57,14 @@ class _AppInitScreenState extends State<AppInitScreen>
                 predicate: (route) => false);
           } else if (state is CheckAuthStateSuccess &&
               status == AnimationStatus.completed) {
-            if (user_role.first == 'ROLE_STUDENT') {
+            if (userRole.first == 'ROLE_STUDENT') {
               getIt.get<ProfileBloc>().add(GetCurrentUserEvent());
               getIt.get<SubjectBloc>().add(GetAllSubjectEvent());
               getIt.get<ScoreBloc>().add(GetAllScoresEvent());
 
               context.router.pushAndPopUntil(const AppRoute(),
                   predicate: (router) => false);
-            } else if (user_role.first == 'ROLE_TEACHER') {
+            } else if (userRole.first == 'ROLE_TEACHER') {
               getIt.get<ProfileBloc>().add(GetCurrentUserEvent());
               context.router.pushAndPopUntil(const TeacherBoardRoute(),
                   predicate: (router) => false);

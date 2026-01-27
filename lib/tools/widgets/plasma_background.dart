@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:sa3_liquid/liquid/plasma/plasma.dart';
 
 class PlasmaBackground extends StatelessWidget {
-  const PlasmaBackground({Key? key}) : super(key: key);
+  const PlasmaBackground({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.black, //dee1ec//fffbf3//f3eded
         backgroundBlendMode: BlendMode.srcOver,
       ),

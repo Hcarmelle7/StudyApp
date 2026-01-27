@@ -14,7 +14,7 @@ import 'package:mystudy/tools/themes/colors/app_colors.dart';
 
 @RoutePage()
 class CreateQuizPage extends StatefulWidget {
-  CreateQuizPage({super.key});
+  const CreateQuizPage({super.key});
 
   @override
   State<CreateQuizPage> createState() => _CreateQuizPageState();
@@ -137,7 +137,7 @@ class _CreateQuizPageState extends State<CreateQuizPage> {
                   int index = entry.key;
                   QuestionModel question = entry.value;
                   return buildQuestionField(index, question);
-                }).toList(),
+                }),
 
                 const SizedBox(height: 10),
                 ElevatedButton(
@@ -230,7 +230,7 @@ class _CreateQuizPageState extends State<CreateQuizPage> {
           int answerIndex = entry.key;
           AnswerModel answer = entry.value;
           return buildAnswerField(questionIndex, answerIndex, answer);
-        }).toList(),
+        }),
         ElevatedButton(
           onPressed: addAnswer,
           child: const Text('Ajouter une réponse'),

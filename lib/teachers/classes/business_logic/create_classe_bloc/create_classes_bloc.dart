@@ -12,8 +12,8 @@ class CreateClassesBloc extends Bloc<CreateClassesEvent, CreateClassesState> {
     on<CreateClasseEvent>((event, emit) async {
       emit(CreateClasseLoading());
       try {
-        final Classe = await repository.createClasse(event.Classe);
-        emit(CreateClasseSuccess(Classe));
+        final classe = await repository.createClasse(event.classe);
+        emit(CreateClasseSuccess(classe));
       } catch (e) {
         emit(CreateClasseFailure(message: e.toString()));
       }

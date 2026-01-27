@@ -115,7 +115,7 @@ class TeacherBoardScreen extends StatelessWidget {
                         decoration: BoxDecoration(
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.black.withOpacity(0.1),
+                              color: Colors.black.withValues(alpha: 0.1),
                               blurRadius: 8,
                               offset: const Offset(0, 12),
                             ),
@@ -123,14 +123,14 @@ class TeacherBoardScreen extends StatelessWidget {
                         ),
                         child: InkWell(
                             onTap: () {
-                              context.router.push(SeachDataRoute());
+                              context.router.push(const SeachDataRoute());
                             },
                             child: Container(
                               decoration: BoxDecoration(
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(25)),
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
+                              child: const Padding(
+                                padding: EdgeInsets.all(8.0),
                                 child: Row(
                                   children: [
                                     Icon(Icons.search),
@@ -178,14 +178,14 @@ class TeacherBoardScreen extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(items:  [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'home'),
+        const BottomNavigationBarItem(icon: Icon(Icons.home), label: 'home'),
         BottomNavigationBarItem(icon: InkWell(onTap: (){
           context.router.push(CreateQuestionRoute());
-        } ,child: Icon(Icons.question_answer)), label: 'Questions'),
+        } ,child: const Icon(Icons.question_answer)), label: 'Questions'),
         BottomNavigationBarItem(icon: InkWell(onTap: () {
             getIt.get<SubjectBloc>().add(GetAllSubjectEvent());
-            context.router.pushAndPopUntil(QuestionListRoute(), predicate: (router) => false);
-        },child: Icon(Icons.folder_open)), label: 'Library'),
+            context.router.pushAndPopUntil(const QuestionListRoute(), predicate: (router) => false);
+        },child: const Icon(Icons.folder_open)), label: 'Library'),
       ]),
     );
   }

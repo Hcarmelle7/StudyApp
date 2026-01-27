@@ -42,7 +42,7 @@ class OnboardingContentWidget extends StatelessWidget {
                       await SharedPreferences.getInstance();
 
                   prefs.setBool('is_first_time_launch', true);
-
+                  if (!context.mounted) return;
                   context.router.pushAndPopUntil(
                     LoginRoute(),
                     predicate: (router) => false,
@@ -63,9 +63,9 @@ class OnboardingContentWidget extends StatelessWidget {
                       await SharedPreferences.getInstance();
 
                   prefs.setBool('is_first_time_launch', true);
-
+                  if (!context.mounted) return;
                   context.router.pushAndPopUntil(
-                    LegisterRoute(),
+                    const LegisterRoute(),
                     predicate: (router) => false,
                   );
                 },
