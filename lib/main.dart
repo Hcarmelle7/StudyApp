@@ -4,28 +4,35 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:loader_overlay/loader_overlay.dart';
-// Assurez-vous que vos imports sont corrects ici
-import 'package:mystudy/auth/business_logic/profile_bloc/profile_bloc.dart';
-import 'package:mystudy/level/business_logic/bloc/level_bloc.dart';
-import 'package:mystudy/quiz/answers/business_logic/create_answer_bloc/create_answer_bloc.dart';
-import 'package:mystudy/quiz/answers/business_logic/get_answer_bloc/get_answer_bloc.dart';
-import 'package:mystudy/quiz/business_logic/create_quiz_bloc/create_quiz_bloc.dart';
-import 'package:mystudy/quiz/business_logic/quiz_bloc/quiz_bloc.dart';
-import 'package:mystudy/quiz/business_logic/quiz_by_id_bloc/quiz_by_id_bloc.dart';
-import 'package:mystudy/quiz/business_logic/score_bloc/score_bloc.dart';
-import 'package:mystudy/quiz/questions/business_logic/create_question_bloc/create_question_bloc.dart';
-import 'package:mystudy/quiz/questions/business_logic/questions_bloc/questions_bloc.dart';
+import 'package:mystudy/features/auth/business_logic/profile_bloc/profile_bloc.dart';
+import 'package:mystudy/core/services/ai/ai_service.dart';
+import 'package:mystudy/features/level/business_logic/bloc/level_bloc.dart';
+import 'package:mystudy/features/quiz/component/answers/business_logic/create_answer_bloc/create_answer_bloc.dart';
+import 'package:mystudy/features/quiz/component/answers/business_logic/get_answer_bloc/get_answer_bloc.dart';
+import 'package:mystudy/features/quiz/business_logic/create_quiz_bloc/create_quiz_bloc.dart';
+import 'package:mystudy/features/quiz/business_logic/quiz_bloc/quiz_bloc.dart';
+import 'package:mystudy/features/quiz/business_logic/quiz_by_id_bloc/quiz_by_id_bloc.dart';
+import 'package:mystudy/features/quiz/business_logic/score_bloc/score_bloc.dart';
+import 'package:mystudy/features/quiz/component/questions/business_logic/create_question_bloc/create_question_bloc.dart';
+import 'package:mystudy/features/quiz/component/questions/business_logic/questions_bloc/questions_bloc.dart';
 import 'package:mystudy/router/app_router.dart';
-import 'package:mystudy/state/business_logic/theme_cubit.dart';
-import 'package:mystudy/state/service_locator.dart';
-import 'package:mystudy/auth/business_logic/bloc/auth_bloc.dart';
-import 'package:mystudy/student/business_logic/bloc/student_bloc.dart';
-import 'package:mystudy/subject/business_logic/subject_bloc/subject_bloc.dart';
-import 'package:mystudy/tools/themes/light_theme.dart';
+import 'package:mystudy/core/themes/business_logic/theme_cubit.dart';
+import 'package:mystudy/core/services/network/service_locator.dart';
+import 'package:mystudy/features/auth/business_logic/auth_bloc/auth_bloc.dart';
+import 'package:mystudy/features/student/business_logic/bloc/student_bloc.dart';
+import 'package:mystudy/features/subject/business_logic/subject_bloc/subject_bloc.dart';
+import 'package:mystudy/core/themes/light_theme.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() async {
+Future<void> main() async {
   // MODIFICATION 1 : Indispensable pour éviter l'écran blanc au démarrage
   WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: "assets/.env");
+  //print("MA CLÉ EST : ${dotenv.env['GEMINI_API_KEY']}");
+  print("🤖 J'envoie une demande à Gemini...");
+  final ai = AIService();
+  final resume = await ai.generateSummary("installer poetry et python");
+  print("✨ RÉPONSE DE L'IA :\n$resume");
 
   LicenseRegistry.addLicense(() async* {
     final license = await rootBundle.loadString('fonts/alegrey/OFL.txt');

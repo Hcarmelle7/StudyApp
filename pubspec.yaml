@@ -53,6 +53,9 @@ dependencies:
   get: ^4.6.6
   bloc: ^9.2.0
   meta: ^1.17.0
+  flutter_dotenv: ^6.0.0
+  http: ^1.2.0
+  google_generative_ai: ^0.4.6
 
 
 
@@ -89,6 +92,7 @@ flutter:
     - assets/videos/
     - assets/animations/
     - assets/google_fonts/
+    - assets/.env
 
 
 

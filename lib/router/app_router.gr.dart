@@ -11,35 +11,35 @@
 import 'package:auto_route/auto_route.dart' as _i24;
 import 'package:flutter/material.dart' as _i25;
 import 'package:mystudy/app_screen.dart' as _i2;
-import 'package:mystudy/auth/presentation/login_screen.dart' as _i12;
-import 'package:mystudy/auth/presentation/profile_screen.dart' as _i14;
-import 'package:mystudy/auth/presentation/register.dart' as _i10;
-import 'package:mystudy/auth/presentation/user_list_screen.dart' as _i23;
+import 'package:mystudy/features/auth/presentation/login_screen.dart' as _i12;
+import 'package:mystudy/features/auth/presentation/profile_screen.dart' as _i14;
+import 'package:mystudy/features/auth/presentation/register.dart' as _i10;
+import 'package:mystudy/features/auth/presentation/user_list_screen.dart' as _i23;
 import 'package:mystudy/home_screen.dart' as _i9;
-import 'package:mystudy/level/presentation/pages/create_level_page.dart' as _i4;
-import 'package:mystudy/level/presentation/pages/level_page.dart' as _i11;
-import 'package:mystudy/onboarding/onboarding_screen.dart' as _i13;
-import 'package:mystudy/quiz/presentation/pages/create.dart' as _i7;
-import 'package:mystudy/quiz/presentation/pages/quiz_game/game_screen.dart'
+import 'package:mystudy/features/level/presentation/pages/create_level_page.dart' as _i4;
+import 'package:mystudy/features/level/presentation/pages/level_page.dart' as _i11;
+import 'package:mystudy/features/onboarding/onboarding_screen.dart' as _i13;
+import 'package:mystudy/features/quiz/presentation/pages/create.dart' as _i7;
+import 'package:mystudy/features/quiz/presentation/pages/quiz_game/game_screen.dart'
     as _i8;
-import 'package:mystudy/quiz/presentation/pages/quiz_game/quiz_game_screen.dart'
+import 'package:mystudy/features/quiz/presentation/pages/quiz_game/quiz_game_screen.dart'
     as _i16;
-import 'package:mystudy/quiz/presentation/pages/quiz_screen.dart' as _i17;
-import 'package:mystudy/quiz/questions/presentation/pages/create_question_page.dart'
+import 'package:mystudy/features/quiz/presentation/pages/quiz_screen.dart' as _i17;
+import 'package:mystudy/features/quiz/component/questions/presentation/pages/create_question_page.dart'
     as _i6;
-import 'package:mystudy/quiz/questions/presentation/pages/question_list_page.dart'
+import 'package:mystudy/features/quiz/component/questions/presentation/pages/question_list_page.dart'
     as _i15;
-import 'package:mystudy/quiz/questions/presentation/pages/test.dart' as _i5;
-import 'package:mystudy/quiz/questions/presentation/widgets/create_answer_widget.dart'
+import 'package:mystudy/features/quiz/component/questions/presentation/pages/test.dart' as _i5;
+import 'package:mystudy/features/quiz/component/questions/presentation/widgets/create_answer_widget.dart'
     as _i3;
-import 'package:mystudy/search/seach_data_page.dart' as _i18;
-import 'package:mystudy/state/app_init_screen.dart' as _i1;
-import 'package:mystudy/student/presentation/pages/update_student_page.dart'
+import 'package:mystudy/features/search/pages/seach_data_page.dart' as _i18;
+import 'package:mystudy/core/services/presentation/app_init_screen.dart' as _i1;
+import 'package:mystudy/features/student/presentation/pages/update_student_page.dart'
     as _i22;
-import 'package:mystudy/students/student_board.dart' as _i19;
-import 'package:mystudy/subject/presentation/pages/subject_list_screen.dart'
+import 'package:mystudy/features/students/student_board.dart' as _i19;
+import 'package:mystudy/features/subject/presentation/pages/subject_list_screen.dart'
     as _i20;
-import 'package:mystudy/teachers/teacher_board.dart' as _i21;
+import 'package:mystudy/features/teachers/teacher_board.dart' as _i21;
 
 /// generated route for
 /// [_i1.AppInitScreen]

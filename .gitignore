@@ -59,6 +59,6 @@ macos/Flutter/ephemeral/
 # -----------------------
 # 🔒 SÉCURITÉ (TRÈS IMPORTANT)
 # -----------------------
-.env
+assets/.env
 env/
 *.pem

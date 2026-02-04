@@ -1,10 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:badges/badges.dart' as badges;
-import 'package:mystudy/auth/business_logic/profile_bloc/profile_bloc.dart';
+import 'package:mystudy/features/auth/business_logic/profile_bloc/profile_bloc.dart';
 import 'package:mystudy/router/app_router.gr.dart';
-import 'package:mystudy/state/service_locator.dart';
-import 'package:mystudy/tools/widgets/service_widget.dart';
+import 'package:mystudy/core/services/network/service_locator.dart';
+import 'package:mystudy/core/widgets/service_widget.dart';
 
 @RoutePage()
 class HomeScreen extends StatelessWidget {
